@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div ng-app="Paginador">
+        <p ng-controller="miTabla">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <!--<th>F.Nacimiento</th>-->
+                <th>Estado</th>
+                <th>Sexo</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+                <tr ng-repeat="reg in data">
+                    
+                </tr>
+        </table>
+        </p>
+    </div>
+{% endblock %}

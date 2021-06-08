@@ -88,6 +88,12 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
+    "knplabs/knp-components": {
+        "version": "v3.0.2"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.5.1"
+    },
     "laminas/laminas-code": {
         "version": "4.3.0"
     },
@@ -226,6 +232,18 @@
         },
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
+        ]
+    },
+    "symfony/apache-pack": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "71599f5b0fdeeeec0fb90e9b17c85e6f5e1350c1"
+        },
+        "files": [
+            "./public/.htaccess"
         ]
     },
     "symfony/asset": {
@@ -608,6 +626,9 @@
     },
     "theseer/tokenizer": {
         "version": "1.2.0"
+    },
+    "twbs/bootstrap": {
+        "version": "v4.0.0"
     },
     "twig/extra-bundle": {
         "version": "v3.3.1"

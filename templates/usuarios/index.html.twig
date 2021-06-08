@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <!--<div class="count">
+        {{ pagination.getTotalItemCount }}
+    </div>-->
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                {# sorting of properties based on query components #}
+                <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'usu.nombre') }}</th>
+                <th{% if pagination.isSorted('a.apellidos') %} class="sorted"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'Apellidos', 'usu.apellidos') }}
+                </th>
+                <th{% if pagination.isSorted('a.fecha_nacimiento') %} class="sorted"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'F.Nacimiento', 'usu.fecha_nacimiento') }}
+                </th>
+                <th{% if pagination.isSorted('a.estado') %} class="sorted"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'Estado', 'usu.estado') }}
+                </th>
+                <th{% if pagination.isSorted('a.sexo_nombre') %} class="sorted"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'Sexo', 'sexo.nombre') }}
+                </th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        {# table body #}
+        {% for article in pagination %}
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
+                <td>{{ article.nombre }}</td>
+                <td>{{ article.apellidos }}</td>
+                <td>{{ article.fecha_nacimiento | date('d-m-Y') }}</td>
+                {% if article.estado %}
+                    <td>Activo</td>
+                {% else %}
+                    <td>Inactivo</td>
+                {% endif %}
+                <td>{{ article.sexo_nombre }}</td>
+                <td>
+                    <a href="user/edit/{{ article.id }}" class="btn btn-sm btn-primary">Editar</a>
+                    <a href="user/delete/{{ article.id }}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}
